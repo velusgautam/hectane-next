@@ -6,7 +6,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function Blog() {
   const router = useRouter();
   const { data, error } = useSWR(
-    `http://localhost:3200/posts/route/${router.query.slug}`,
+    `https://backend.hectane.com/posts/route/${router.query.slug}`,
     fetcher
   );
   if (error) return <div>Failed to load user</div>;
