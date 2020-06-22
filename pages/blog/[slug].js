@@ -77,7 +77,7 @@ export const getStaticPaths = async () => {
 
 const fetcher = async (url) => fetch(url).then((res) => res.json());
 
-export const getStaticProps = async ({ params: { slug } }) => {
+export const getServerSideProps = async ({ params: { slug } }) => {
   console.log('slug');
   console.log(slug);
   // const markdownWithMetadata = fs
