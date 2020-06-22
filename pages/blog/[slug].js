@@ -83,7 +83,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   // const markdownWithMetadata = fs
   //   .readFileSync(path.join("posts", slug + ".md"))
   //   .toString();
-  const data = await fetcher(`http://localhost:3200/posts/route/${slug}`);
+  const data = await fetcher(`https://backend.hectane.com/posts/route/${slug}`);
   // const parsedMarkdown = matter(markdownWithMetadata);
 
   // const htmlString = marked(parsedMarkdown.content);
