@@ -58,22 +58,22 @@ const Post = ({ post, data }) => {
   );
 };
 
-export const getStaticPaths = async () => {
-  // const files = fs.readdirSync("posts");
-  // console.log("files: ", files);
-  // const paths = files.map(filename => ({
-  //   params: {
-  //     slug: filename.replace(".md", "")
-  //   }
-  // }));
-  const paths = [{ params: { slug: 'dial-pad-problem-javascript-interview' } }];
-  console.log('paths: ', paths);
+// export const getStaticPaths = async () => {
+//   // const files = fs.readdirSync("posts");
+//   // console.log("files: ", files);
+//   // const paths = files.map(filename => ({
+//   //   params: {
+//   //     slug: filename.replace(".md", "")
+//   //   }
+//   // }));
+//   const paths = [{ params: { slug: 'dial-pad-problem-javascript-interview' } }];
+//   console.log('paths: ', paths);
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
 const fetcher = async (url) => fetch(url).then((res) => res.json());
 
