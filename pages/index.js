@@ -19,10 +19,10 @@ Router.events.on('routeChangeError', () => {
 export default function Home({ slugs }) {
   return (
     <div className="container">
-      {/* <Head>
+      <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head> */}
+      </Head>
       <main>
         <nav>
           <NavLink href="/technology">Technology</NavLink>
