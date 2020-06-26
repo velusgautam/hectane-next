@@ -54,10 +54,21 @@ const Post = ({ data }) => {
   );
 };
 
-export const getServerSideProps = async ({ params: { slug } }) => {
+export const getStaticPaths = async () => {
+  const slugs = await fetcher(`posts/blog/routes`);
+  const paths = slugs.map((slug) => ({ params: { slug } }));
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params: { slug } }) => {
   const data = await fetcher(`posts/route/${slug}`);
+
   return {
     props: {
+      post: data,
       data: data,
     },
   };

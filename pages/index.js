@@ -16,7 +16,7 @@ Router.events.on('routeChangeError', () => {
   console.log('ERROR'); //NProgress.start()
 });
 
-export default function Home({ slugs }) {
+export default function Home({ slugs, blogRoutes }) {
   return (
     <div className="container">
       <Head>
@@ -26,12 +26,16 @@ export default function Home({ slugs }) {
       <main>
         <nav>
           <NavLink href="/technology">Technology</NavLink>
-          <Link
-            href="/blog/[slug]"
-            as="/blog/dial-pad-problem-javascript-interview"
-          >
-            <a>dial pad</a>
-          </Link>
+          {blogRoutes.map((slug) => {
+            return (
+              <>
+                <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+                  <a>{`${slug}`}</a>
+                </Link>{' '}
+                |
+              </>
+            );
+          })}
         </nav>
         <h1 className="title">Welcome to Next.js!</h1>
       </main>
@@ -51,10 +55,13 @@ export default function Home({ slugs }) {
 }
 
 export const getStaticProps = async () => {
-  const slugs = await fetcher(`posts/static/routes`);
+  let slugs = await fetcher(`posts/static/routes`);
+  const blogRoutes = await fetcher(`posts/blog/routes`);
+
   return {
     props: {
       slugs,
+      blogRoutes,
     },
   };
 };
