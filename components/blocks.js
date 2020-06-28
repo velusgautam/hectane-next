@@ -3,7 +3,7 @@ import Header from './header';
 import Code from './code';
 import Paragaraph from './paragraph';
 
-const Blocks = ({ type, data }) => {
+const Blocks = ({ type, data, sanitize = true }) => {
   if (type === 'image') {
     return <Picture data={data} />;
   }
@@ -14,7 +14,7 @@ const Blocks = ({ type, data }) => {
     return <Code data={data} />;
   }
   if (type === 'paragraph') {
-    return <Paragaraph data={data} />;
+    return <Paragaraph data={data} doSanitize={sanitize} />;
   }
   return null;
 };

@@ -3,7 +3,6 @@ import { fetcher } from '../utils/api';
 
 const PageViews = ({ id }) => {
   //PageViews Client Rendering
-  console.log(id);
   let pageViews = 0;
   const { data, error } = useSWR(`posts-meta-data/${id}`, fetcher);
   if (data) {

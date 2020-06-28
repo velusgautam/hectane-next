@@ -16,7 +16,9 @@ const StaticPosts = ({ post }) => {
         <h4 className="post--sub-title">{post.subTitle}</h4>
         <div className="post--body">
           {post.body.map(({ type, data }, index) => {
-            return <Blocks type={type} data={data} key={index} />;
+            return (
+              <Blocks type={type} data={data} key={index} sanitize={false} />
+            );
           })}
         </div>
       </div>

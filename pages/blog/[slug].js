@@ -8,40 +8,7 @@ import Author from '../../components/author';
 import PageViews from '../../components/page-views';
 import styles from './[slug].module.css';
 
-// import hljs from 'highlight.js';
-// import javascript from 'highlight.js/lib/languages/javascript';
-// hljs.registerLanguage('javascript', javascript);
-
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import bash from 'highlight.js/lib/languages/bash';
-// import sql from 'highlight.js/lib/languages/sql';
-import scss from 'highlight.js/lib/languages/scss';
-import json from 'highlight.js/lib/languages/json';
-import css from 'highlight.js/lib/languages/css';
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('bash', bash);
-// hljs.registerLanguage('sql', sql);
-hljs.registerLanguage('scss', scss);
-hljs.registerLanguage('json', json);
-hljs.registerLanguage('css', css);
-
 const Post = ({ post, authorData }) => {
-  const nodeRef = useRef(null);
-
-  useEffect(() => {
-    const highlight = () => {
-      if (nodeRef && nodeRef.current) {
-        const nodes = nodeRef.current.querySelectorAll('pre');
-        nodes.forEach((node) => {
-          console.log(hljs);
-          hljs.highlightBlock(node);
-        });
-      }
-    };
-    highlight();
-  });
-
   return (
     <>
       <Head>
@@ -127,7 +94,8 @@ const Post = ({ post, authorData }) => {
           </div>
           <PageViews id={post._id} />
         </div>
-        <div className="post--body" ref={nodeRef}>
+
+        <div className="post--body">
           {post.body.map(({ type, data }, index) => {
             return <Blocks type={type} data={data} key={index} />;
           })}
