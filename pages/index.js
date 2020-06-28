@@ -21,19 +21,18 @@ export default function Home({ slugs, blogRoutes }) {
     <div className="container">
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
         <nav>
           <NavLink href="/technology">Technology</NavLink>
           {blogRoutes.map((slug) => {
             return (
-              <>
+              <li key={slug}>
                 <Link href="/blog/[slug]" as={`/blog/${slug}`}>
                   <a>{`${slug}`}</a>
-                </Link>{' '}
-                |
-              </>
+                </Link>
+              </li>
             );
           })}
         </nav>
@@ -55,7 +54,7 @@ export default function Home({ slugs, blogRoutes }) {
 }
 
 export const getStaticProps = async () => {
-  let slugs = await fetcher(`posts/static/routes`);
+  const slugs = await fetcher(`posts/static/routes`);
   const blogRoutes = await fetcher(`posts/blog/routes`);
 
   return {

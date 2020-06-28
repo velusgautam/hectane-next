@@ -1,54 +1,137 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Head from 'next/head';
-import { fetcher } from '../../utils/api';
 
-const Post = ({ data }) => {
+import { fetcher } from '../../utils/api';
+import Blocks from '../../components/blocks';
+
+import Author from '../../components/author';
+import PageViews from '../../components/page-views';
+import styles from './[slug].module.css';
+
+// import hljs from 'highlight.js';
+// import javascript from 'highlight.js/lib/languages/javascript';
+// hljs.registerLanguage('javascript', javascript);
+
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import bash from 'highlight.js/lib/languages/bash';
+// import sql from 'highlight.js/lib/languages/sql';
+import scss from 'highlight.js/lib/languages/scss';
+import json from 'highlight.js/lib/languages/json';
+import css from 'highlight.js/lib/languages/css';
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('bash', bash);
+// hljs.registerLanguage('sql', sql);
+hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('css', css);
+
+const Post = ({ post, authorData }) => {
+  const nodeRef = useRef(null);
+
+  useEffect(() => {
+    const highlight = () => {
+      if (nodeRef && nodeRef.current) {
+        const nodes = nodeRef.current.querySelectorAll('pre');
+        nodes.forEach((node) => {
+          console.log(hljs);
+          hljs.highlightBlock(node);
+        });
+      }
+    };
+    highlight();
+  });
+
   return (
     <>
       <Head>
-        <title>{data.title}</title>
-        <meta title="description" content={data.description} />
+        <title>{post.title}</title>
+        <meta name="keywords" content={post.tags.join(', ')} />
+        <meta name="description" content={post.subTitle} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@_hectane" />
+        <meta name="twitter:creator" content="@velusgautam" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.subTitle} />
+        <meta
+          name="twitter:image"
+          content={`ASSET_BASE/${post.route}/title.jpg`}
+        />
+
+        <meta
+          property="og:url"
+          content={`https://hectane.com/blog/${post.route}`}
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.subTitle} />
+        <meta
+          property="og:image"
+          content={`ASSET_BASE/${post.route}/title.jpg`}
+        />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <div className="content">
-        <h1 className="post--title">{data.title}</h1>
-        <h4 className="post--sub-title">{data.subTitle}</h4>
+        <h1 className={styles['post--title']}>{post.title}</h1>
+        <h4 className={styles['post--sub-title']}>{post.subTitle}</h4>
         <picture>
           <source
-            srcSet={`https://assets.hectane.com/${data.route}/mobile.webp`}
+            srcSet={`https://assets.hectane.com/${post.route}/mobile.webp`}
             media="(max-width: 420px)"
             type="image/webp"
           />
           <source
-            srcSet={`https://assets.hectane.com/${data.route}/mobile.jpg`}
+            srcSet={`https://assets.hectane.com/${post.route}/mobile.jpg`}
             media="(max-width: 420px)"
             type="image/jpg"
           />
           <source
-            srcSet={`https://assets.hectane.com/${data.route}/listing.webp`}
+            srcSet={`https://assets.hectane.com/${post.route}/listing.webp`}
             media="( max-width:799px)"
             type="image/webp"
           />
           <source
-            srcSet={`https://assets.hectane.com/${data.route}/listing.jpg`}
+            srcSet={`https://assets.hectane.com/${post.route}/listing.jpg`}
             media="(max-width:799px)"
             type="image/jpg"
           />
           <source
-            srcSet={`https://assets.hectane.com/${data.route}/title.webp`}
+            srcSet={`https://assets.hectane.com/${post.route}/title.webp`}
             media="(min-width: 800px)"
             type="image/webp"
           />
           <source
-            srcSet={`https://assets.hectane.com/${data.route}/title.jpg`}
+            srcSet={`https://assets.hectane.com/${post.route}/title.jpg`}
             media="(min-width: 800px)"
             type="image/jpg"
           />
           <img
-            className="post-title-image"
-            src={`https://assets.hectane.com/${data.route}/title.jpg`}
-            alt={data.title}
+            className={styles['post-title-image']}
+            src={`https://assets.hectane.com/${post.route}/title.jpg`}
+            alt={post.title}
           />
         </picture>
+        <div className={styles['post--metadata']}>
+          <Author
+            name={authorData.name}
+            avathar={authorData.avathar}
+            createdDate={post.createdDate}
+          />
+          <div className={styles['post__tags']}>
+            {post.tags.map((tag) => (
+              <span className={styles['post__tag']} key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <PageViews id={post._id} />
+        </div>
+        <div className="post--body" ref={nodeRef}>
+          {post.body.map(({ type, data }, index) => {
+            return <Blocks type={type} data={data} key={index} />;
+          })}
+        </div>
       </div>
     </>
   );
@@ -64,12 +147,13 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const data = await fetcher(`posts/route/${slug}`);
+  const post = await fetcher(`posts/route/${slug}`);
+  const authorData = await fetcher(`users/${post.authorId}`);
 
   return {
     props: {
-      post: data,
-      data: data,
+      post,
+      authorData,
     },
   };
 };

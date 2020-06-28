@@ -1,17 +1,24 @@
 import React from 'react';
 import Head from 'next/head';
 import { fetcher } from '../utils/api';
+import Blocks from '../components/blocks';
 
-const StaticPosts = ({ post, data }) => {
+const StaticPosts = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{data.title}</title>
-        <meta title="description" content={data.description} />
+        <title>{post.title}</title>
+        <meta title="description" content={post.description} />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <div className="content">
         <h1 className="post--title">{post.title}</h1>
         <h4 className="post--sub-title">{post.subTitle}</h4>
+        <div className="post--body">
+          {post.body.map(({ type, data }, index) => {
+            return <Blocks type={type} data={data} key={index} />;
+          })}
+        </div>
       </div>
     </>
   );
@@ -27,12 +34,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const data = await fetcher(`posts/route/${slug}`);
+  const post = await fetcher(`posts/route/${slug}`);
 
   return {
     props: {
-      post: data,
-      data: data,
+      post,
     },
   };
 };
