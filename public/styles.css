@@ -30,7 +30,7 @@ body {
 }
 
 .container {
-  max-width: var(--maxWidth);
+  max-width: 1072px;
   box-sizing: border-box;
 }
 
@@ -52,6 +52,26 @@ body {
     grid-column-gap: 10px;
     grid-row-gap: 15px;
   }
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-links {
+  padding-bottom: 6px;
+  text-decoration: none;
+  color: #000000;
+  border-bottom: 1px #9c27b0;
+  border-bottom-style: dashed;
+  margin: 10px;
+}
+
+.footer-links::first-letter {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
 }
 
 .hljs {
@@ -123,4 +143,87 @@ body {
 .hljs-deletion,
 .hljs-meta {
   color: #7f7f7f;
+}
+
+.post--container {
+  /* grid-area: post; */
+  align-self: start;
+}
+@media only screen and (min-width: 800px) {
+  .listing--container > :nth-child(1) {
+    grid-column: 1 / 4;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 5px;
+  }
+
+  .listing--container :nth-child(1) .post--title-image {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    align-self: start;
+    /* height: 350px; */
+  }
+
+  .listing--container :nth-child(1) .post--header {
+    margin-top: 0px;
+    margin-left: 15px;
+    display: block;
+  }
+
+  .listing--container :nth-child(1) .post--header .post--title,
+  .listing--container :nth-child(1) .post--header .post--subTitle {
+    margin-top: 0px;
+  }
+
+  :global(.listing--container :nth-child(1) .post--author) {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    align-self: start;
+    margin-left: 15px;
+  }
+}
+
+.post--title-image {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--textBlack);
+}
+
+.post--title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* .post--author {
+  display: flex;
+  align-items: center;
+  animation: falldown 1s ease;
+}
+
+.post--author .img {
+  border-radius: 100%;
+  border: 2px solid #b3b3b3;
+  box-shadow: -3px 6px 6px #d8d8d8;
+}
+
+.details {
+  font-size: small;
+  margin-left: 8px;
+} */
+
+@keyframes falldown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

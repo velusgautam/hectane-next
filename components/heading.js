@@ -1,6 +1,6 @@
 import styles from './header.module.css';
 
-const Header = ({ data: { text, level } }) => {
+const Heading = ({ data: { text, level } }) => {
   if (level === 1) {
     return <h1>{text}</h1>;
   }
@@ -16,4 +16,4 @@ const Header = ({ data: { text, level } }) => {
   return null;
 };
 
-export default Header;
+export default Heading;

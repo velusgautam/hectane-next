@@ -2,10 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import { fetcher } from '../utils/api';
 import Blocks from '../components/blocks';
+import Layout from '../layouts/main.layout';
 
 const StaticPosts = ({ post }) => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>{post.title}</title>
         <meta title="description" content={post.description} />
@@ -22,7 +23,7 @@ const StaticPosts = ({ post }) => {
           })}
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

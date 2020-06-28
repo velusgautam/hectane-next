@@ -1,5 +1,7 @@
+import Layout from '../layouts/main.layout';
+
 function Technology() {
-  return <div>Technology</div>;
+  return <Layout>Technology</Layout>;
 }
 
 export default Technology;

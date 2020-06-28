@@ -1,5 +1,5 @@
 import Picture from './picture';
-import Header from './header';
+import Heading from './heading';
 import Code from './code';
 import Paragaraph from './paragraph';
 
@@ -8,7 +8,7 @@ const Blocks = ({ type, data, sanitize = true }) => {
     return <Picture data={data} />;
   }
   if (type === 'header') {
-    return <Header data={data} />;
+    return <Heading data={data} />;
   }
   if (type === 'code') {
     return <Code data={data} />;
