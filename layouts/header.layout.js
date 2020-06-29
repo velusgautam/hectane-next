@@ -23,18 +23,16 @@ const Header = () => {
       </div>
       <div style={{ textAlign: 'center' }}>
         <nav className="margin-auto container main-links">
-          <ul>
-            {mainRoutes.map(({ path, name }) => {
-              return (
-                <NavLink
-                  path={path}
-                  name={name}
-                  key={path}
-                  asPath={router.asPath}
-                />
-              );
-            })}
-          </ul>
+          {mainRoutes.map(({ path, name }) => {
+            return (
+              <NavLink
+                path={path}
+                name={name}
+                key={path}
+                asPath={router.asPath}
+              />
+            );
+          })}
         </nav>
       </div>
       {currentPathName && (

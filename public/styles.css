@@ -67,12 +67,12 @@ body {
 }
 
 .footer-links {
-  padding-bottom: 6px;
+  padding: 10px 10px;
   text-decoration: none;
   color: #464655;
   /* border-bottom: 1px #9c27b0;
   border-bottom-style: dashed; */
-  margin: 10px;
+  margin-right: 5px;
 }
 
 .footer-links::first-letter {
