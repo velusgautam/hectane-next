@@ -26,7 +26,7 @@ const Learnings = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
-  let posts = await fetcher(`posts/technology/7`);
+  let posts = await fetcher(`posts/learnings/7`);
   if (posts && Array.isArray(posts)) {
     posts = await Promise.all(
       posts.map(async (post) => {
