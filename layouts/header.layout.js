@@ -1,13 +1,14 @@
-import { mainRoutes } from './routes';
+import { mainRoutes, footerRoutes } from './routes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const Header = () => {
   const router = useRouter();
   let currentPathName = '';
-  const currentRoute = mainRoutes.filter(
+  const currentRoute = [...mainRoutes, ...footerRoutes].filter(
     (route) => route.path === router.asPath
   );
+
   if (currentRoute.length > 0) {
     currentPathName = currentRoute[0].name;
   }
@@ -38,7 +39,7 @@ const Header = () => {
       </div>
       {currentPathName && (
         <div>
-          <h2>{currentPathName}</h2>
+          <h2 className="page-title">{currentPathName}</h2>
         </div>
       )}
     </div>

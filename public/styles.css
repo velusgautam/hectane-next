@@ -57,14 +57,21 @@ body {
 .footer-container {
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid #ececec;
+  margin: 25px;
+  padding-top: 10px;
+  /* display: grid; */
+  justify-items: right;
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
 }
 
 .footer-links {
   padding-bottom: 6px;
   text-decoration: none;
-  color: #000000;
-  border-bottom: 1px #9c27b0;
-  border-bottom-style: dashed;
+  color: #464655;
+  /* border-bottom: 1px #9c27b0;
+  border-bottom-style: dashed; */
   margin: 10px;
 }
 
@@ -242,4 +249,11 @@ a {
   background-color: rgb(255, 62, 0);
   display: block;
   bottom: -1px;
+}
+
+.page-title {
+  color: #464655;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border-bottom: 1px solid #ececec;
 }

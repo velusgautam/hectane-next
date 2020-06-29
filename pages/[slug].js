@@ -12,8 +12,8 @@ const StaticPosts = ({ post }) => {
         <meta title="description" content={post.description} />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className="content">
-        <h1 className="post--title">{post.title}</h1>
+      <div className="container margin-auto padding-left20 padding-right20">
+        {/* <h1 className="post--title">{post.title}</h1> */}
         <h4 className="post--sub-title">{post.subTitle}</h4>
         <div className="post--body">
           {post.body.map(({ type, data }, index) => {
