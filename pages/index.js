@@ -17,7 +17,7 @@ Router.events.on('routeChangeError', () => {
   console.log('ERROR'); //NProgress.start()
 });
 
-function Home({ posts, authorData }) {
+function Home({ posts }) {
   return (
     <Layout>
       <div className="container margin-auto padding-left20 padding-right20">

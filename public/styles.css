@@ -227,3 +227,19 @@ a {
     transform: translateY(0);
   }
 }
+
+.link {
+  padding: 0.7em 0.5em;
+  color: #161e1e;
+  position: relative;
+  display: inline-block;
+}
+.link.active::after {
+  position: absolute;
+  content: '';
+  width: calc(100% - 1em);
+  height: 2px;
+  background-color: rgb(255, 62, 0);
+  display: block;
+  bottom: -1px;
+}
