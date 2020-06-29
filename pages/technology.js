@@ -1,6 +1,7 @@
 import Layout from '../layouts/main.layout';
 import { fetcher } from '../utils/api';
 import Head from 'next/head';
+import Post from '../components/post';
 
 function Technology({ posts }) {
   return (

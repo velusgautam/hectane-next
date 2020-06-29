@@ -1,8 +1,9 @@
 import Layout from '../layouts/main.layout';
 import { fetcher } from '../utils/api';
 import Head from 'next/head';
+import Post from '../components/post';
 
-const Interviews = () => {
+const Interviews = ({ posts }) => {
   return (
     <Layout>
       <div className="container margin-auto padding-left20 padding-right20">
