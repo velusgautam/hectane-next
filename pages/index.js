@@ -33,8 +33,13 @@ function Home({ posts }) {
           />
         </Head>
         <main className="listing--container">
-          {posts.map((post) => (
-            <Post post={post} author={post.author} key={post.route} />
+          {posts.map((post, index) => (
+            <Post
+              post={post}
+              author={post.author}
+              key={post.route}
+              index={index}
+            />
           ))}
         </main>
       </div>

@@ -1,22 +1,32 @@
 import Author from './author';
 
-const Post = ({ post, author }) => {
+const Post = ({ post, author, index }) => {
+  const imgPath = index === 0 ? 'listing' : 'mobile';
+  const size = index === 0 ? { width: 682, height: 341 } : {};
   return (
     <div className="post--container">
       <a href={`./blog/${post.route}`} rel="prefetch">
         <picture>
           <source
-            srcSet={`https://assets.hectane.com/${post.route}/listing.webp`}
+            srcSet={`https://assets.hectane.com/${post.route}/${imgPath}.webp`}
             type="image/webp"
           />
+          {index === 0 && (
+            <source
+              srcSet={`https://assets.hectane.com/${post.route}/mobile.webp`}
+              type="image/webp"
+            />
+          )}
           <source
-            srcSet={`https://assets.hectane.com/${post.route}/listing.jpg`}
+            srcSet={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
             type="image/jpg"
           />
           <img
             className="post--title-image"
-            src={`https://assets.hectane.com/${post.route}/listing.jpg`}
+            {...size}
+            src={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
             alt={post.route}
+            loading="lazy"
           />
         </picture>
       </a>

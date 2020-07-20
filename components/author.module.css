@@ -1,7 +1,6 @@
 .post--author {
   display: flex;
   align-items: center;
-  animation: falldown 1s ease;
 }
 
 .post--author .img {
@@ -15,7 +14,7 @@
   margin-left: 8px;
 }
 
-@keyframes falldown {
+/* @keyframes falldown {
   0% {
     opacity: 0.5;
     transform: translateY(-1px);
@@ -25,4 +24,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */

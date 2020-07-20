@@ -79,6 +79,13 @@ const Post = ({ post, authorData }) => {
               className={styles['post-title-image']}
               src={`https://assets.hectane.com/${post.route}/title.jpg`}
               alt={post.title}
+              width="1024"
+              height="512"
+              loading="lazy"
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
             />
           </picture>
           <div className={styles['post--metadata']}>
