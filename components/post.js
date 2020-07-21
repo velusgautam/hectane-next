@@ -2,7 +2,7 @@ import Author from './author';
 
 const Post = ({ post, author, index }) => {
   const imgPath = index === 0 ? 'listing' : 'mobile';
-  const size = index === 0 ? { width: 682, height: 341 } : {};
+  // const size = index === 0 ? { width: 682, height: 341 } : {};
   return (
     <div className="post--container">
       <a href={`./blog/${post.route}`} rel="prefetch">
@@ -23,7 +23,7 @@ const Post = ({ post, author, index }) => {
           />
           <img
             className="post--title-image lazyload"
-            {...size}
+            // {...size}
             data-src={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
             alt={post.route}
             loading="lazy"

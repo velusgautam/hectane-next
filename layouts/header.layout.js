@@ -18,7 +18,7 @@ const Header = () => {
       <div style={{ textAlign: 'center' }}>
         <picture>
           <source srcSet="/logo.webp" type="image/webp" />
-          <img src="/logo.png" alt="hectane logo" />
+          <img src="/logo.png" alt="hectane logo" width="189" height="104" />
         </picture>
       </div>
       <div style={{ textAlign: 'center' }}>
