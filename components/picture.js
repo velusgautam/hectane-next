@@ -3,12 +3,16 @@ const Picture = ({
 }) => {
   return (
     <picture>
+      <source
+        srcSet={`${url.replace(/\.[^/.]+$/, '')}.webp`}
+        type="image/webp"
+      />
       <img
         alt={caption}
-        className={`${withBorder ? 'border ' : ''}${
+        className={`lazyload ${withBorder ? 'border ' : ''}${
           withBackground ? 'background ' : ''
         }${stretched ? 'stretched' : 'center'}`}
-        src={`${url.replace(/\.[^/.]+$/, '')}.jpg`}
+        data-src={`${url.replace(/\.[^/.]+$/, '')}.jpg`}
       />
     </picture>
   );

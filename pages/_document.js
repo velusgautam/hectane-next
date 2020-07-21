@@ -45,6 +45,7 @@ class MyDocument extends Document {
               })(window, document, 'script', 'dataLayer', 'UA-60696295-1');`,
             }}
           />
+          <script src="/lazysizes.min.js" async></script>
           <noscript>
             <h1>Javascript is required to run hectane.com.</h1>
           </noscript>

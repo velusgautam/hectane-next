@@ -22,9 +22,9 @@ const Post = ({ post, author, index }) => {
             type="image/jpg"
           />
           <img
-            className="post--title-image"
+            className="post--title-image lazyload"
             {...size}
-            src={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
+            data-src={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
             alt={post.route}
             loading="lazy"
           />
