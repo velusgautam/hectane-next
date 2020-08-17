@@ -1,11 +1,12 @@
 import Author from './author';
+import Link from 'next/link';
 
 const Post = ({ post, author, index }) => {
   const imgPath = index === 0 ? 'listing' : 'mobile';
   // const size = index === 0 ? { width: 682, height: 341 } : {};
   return (
     <div className="post--container">
-      <a href={`./blog/${post.route}`} rel="prefetch">
+      <Link href={`/blog/${post.route}`} as={`/blog/${post.route}`}>
         <picture>
           <source
             srcSet={`https://assets.hectane.com/${post.route}/${imgPath}.webp`}
@@ -29,17 +30,15 @@ const Post = ({ post, author, index }) => {
             loading="lazy"
           />
         </picture>
-      </a>
+      </Link>
       <div>
-        <a
-          href={`./blog/${post.route}`}
-          className="post--header"
-          rel="prefetch"
-        >
-          <h3 className="post--title">{post.title}</h3>
-          <p className="post--subTitle">{post.subTitle}</p>
-        </a>
+        <Link href="/blog/[slug]" as={`/blog/${post.route}`}>
+          <a className="post--header">
+            <h3 className="post--title">{post.title}</h3>
 
+            <p className="post--subTitle">{post.subTitle}</p>
+          </a>
+        </Link>
         <Author
           name={author.name}
           avathar={author.avathar}

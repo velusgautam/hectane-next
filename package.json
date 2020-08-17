@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "lint": "prettier --write '**/*.js'",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "export": "next export"
   },
+  "pre-commit": "lint",
+  "license": "MIT",
   "dependencies": {
     "highlight.js": "^10.1.1",
+    "lodash.debounce": "^4.0.8",
     "next": "9.3.5",
     "node-fetch": "^2.6.0",
+    "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "swr": "^0.2.3"
