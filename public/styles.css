@@ -12,6 +12,14 @@ body {
   box-sizing: border-box;
 }
 
+body {
+  background-image: linear-gradient(to bottom, #fcfcfc00, #fcfcfc 400px),
+    radial-gradient(#faecfd 10%, transparent 10%),
+    radial-gradient(#e3e3e3 10%, transparent 10%);
+  background-position: 0 0, 0 4px, 8px 12px;
+  background-size: 100%, 16px 16px, 16px 16px;
+}
+
 .padding-right20 {
   padding-right: 20px;
 }
