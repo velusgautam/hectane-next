@@ -25,7 +25,7 @@ const Post = ({ post, authorData }) => {
           <meta name="twitter:description" content={post.subTitle} />
           <meta
             name="twitter:image"
-            content={`ASSET_BASE/${post.route}/title.jpg`}
+            content={`https://assets.hectane.com/${post.route}/title.jpg`}
           />
 
           <meta
@@ -37,13 +37,13 @@ const Post = ({ post, authorData }) => {
           <meta property="og:description" content={post.subTitle} />
           <meta
             property="og:image"
-            content={`ASSET_BASE/${post.route}/title.jpg`}
+            content={`https://assets.hectane.com/${post.route}/title.jpg`}
           />
           <link rel="icon" href="/favicon.png" />
         </Head>
         <div className="content">
           <h1 className={styles['post--title']}>{post.title}</h1>
-          <h4 className={styles['post--sub-title']}>{post.subTitle}</h4>
+          <h2 className={styles['post--sub-title']}>{post.subTitle}</h2>
           <picture>
             <source
               srcSet={`https://assets.hectane.com/${post.route}/mobile.webp`}

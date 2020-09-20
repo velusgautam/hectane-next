@@ -37,7 +37,7 @@ const Header = () => {
       </div>
       {currentPathName && (
         <div>
-          <h2 className="page-title">{currentPathName}</h2>
+          <h1 className="page-title">{currentPathName}</h1>
         </div>
       )}
     </div>

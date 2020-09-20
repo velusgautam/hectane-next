@@ -36,7 +36,7 @@ const Post = ({ post, author, index }) => {
           className="post--header"
           rel="prefetch"
         >
-          <h3 className="post--title">{post.title}</h3>
+          <h2 className="post--title">{post.title}</h2>
           <p className="post--subTitle">{post.subTitle}</p>
         </a>
 
