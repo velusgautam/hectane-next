@@ -19,7 +19,7 @@ const Post = ({ post, authorData }) => {
           <meta name="description" content={post.subTitle} />
 
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@_hectane" />
+          <meta name="twitter:site" content="@hectane_blog" />
           <meta name="twitter:creator" content="@velusgautam" />
           <meta name="twitter:title" content={post.title} />
           <meta name="twitter:description" content={post.subTitle} />
@@ -76,16 +76,12 @@ const Post = ({ post, authorData }) => {
               type="image/jpg"
             />
             <img
-              className={styles['post-title-image']}
+              className={styles['post--title__image']}
               src={`https://assets.hectane.com/${post.route}/title.jpg`}
               alt={post.title}
               width="1024"
               height="512"
               loading="lazy"
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
             />
           </picture>
           <div className={styles['post--metadata']}>
