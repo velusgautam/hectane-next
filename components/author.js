@@ -3,7 +3,13 @@ import styles from './author.module.css';
 const Author = ({ avathar, name, createdDate }) => {
   return (
     <div className={styles['post--author']}>
-      <img className={styles.img} src={avathar} alt="Velu S Gautam" />
+      <img
+        className={styles.img}
+        src={avathar}
+        alt="Velu S Gautam"
+        width="64px"
+        height="64px"
+      />
       <div className={styles.details}>
         <div className={styles.name}>{name}</div>
         <div className={styles.date}>
