@@ -1,21 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
 import { fetcher } from '@/utils/api'
-import Router from 'next/router'
 
 import Layout from '@/layouts/main.layout'
 import Post from '@/components/post'
-
-// //Binding events.
-// Router.events.on('routeChangeStart', () => {
-//   console.log('START') //NProgress.start()
-// })
-// Router.events.on('routeChangeComplete', () => {
-//   console.log('END') //NProgress.start()
-// })
-// Router.events.on('routeChangeError', () => {
-//   console.log('ERROR') //NProgress.start()
-// })
 
 function Home({ posts }) {
   return (
