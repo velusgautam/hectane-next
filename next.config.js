@@ -1,5 +1,7 @@
-module.exports = {
-  experimental: {
-    jsconfigPaths: true
+module.exports = () => {
+  return {
+    experimental: {
+      jsconfigPaths: true,
+    },
   }
 }

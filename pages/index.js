@@ -1,21 +1,21 @@
-import React from 'react';
-import Head from 'next/head';
-import { fetcher } from '../utils/api';
-import Router from 'next/router';
+import React from 'react'
+import Head from 'next/head'
+import { fetcher } from '@/utils/api'
+import Router from 'next/router'
 
-import Layout from '../layouts/main.layout';
-import Post from '../components/post';
+import Layout from '@/layouts/main.layout'
+import Post from '@/components/post'
 
-//Binding events.
-Router.events.on('routeChangeStart', () => {
-  console.log('START'); //NProgress.start()
-});
-Router.events.on('routeChangeComplete', () => {
-  console.log('END'); //NProgress.start()
-});
-Router.events.on('routeChangeError', () => {
-  console.log('ERROR'); //NProgress.start()
-});
+// //Binding events.
+// Router.events.on('routeChangeStart', () => {
+//   console.log('START') //NProgress.start()
+// })
+// Router.events.on('routeChangeComplete', () => {
+//   console.log('END') //NProgress.start()
+// })
+// Router.events.on('routeChangeError', () => {
+//   console.log('ERROR') //NProgress.start()
+// })
 
 function Home({ posts }) {
   return (
@@ -44,21 +44,21 @@ function Home({ posts }) {
         </main>
       </div>
     </Layout>
-  );
+  )
 }
 
 export const getStaticProps = async () => {
-  let posts = await fetcher(`posts/limit/7`);
+  let posts = await fetcher(`posts/limit/7`)
   if (posts && Array.isArray(posts)) {
     posts = await Promise.all(
-      posts.map(async (post) => {
-        const author = await fetcher(`users/${post.authorId}`);
-        return { ...post, author };
+      posts.map(async post => {
+        const author = await fetcher(`users/${post.authorId}`)
+        return { ...post, author }
       })
-    );
+    )
   }
 
-  return { props: { posts } };
-};
+  return { props: { posts } }
+}
 
-export default Home;
+export default Home

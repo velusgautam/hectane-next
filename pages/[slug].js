@@ -1,8 +1,8 @@
-import React from 'react';
-import Head from 'next/head';
-import { fetcher } from '../utils/api';
-import Blocks from '../components/blocks';
-import Layout from '../layouts/main.layout';
+import React from 'react'
+import Head from 'next/head'
+import { fetcher } from '@/utils/api'
+import Blocks from '@/components/blocks'
+import Layout from '@/layouts/main.layout'
 
 const StaticPosts = ({ post }) => {
   return (
@@ -19,31 +19,31 @@ const StaticPosts = ({ post }) => {
           {post.body.map(({ type, data }, index) => {
             return (
               <Blocks type={type} data={data} key={index} sanitize={false} />
-            );
+            )
           })}
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
 export const getStaticPaths = async () => {
-  const slugs = await fetcher(`posts/static/routes`);
-  const paths = slugs.map((slug) => ({ params: { slug } }));
+  const slugs = await fetcher(`posts/static/routes`)
+  const paths = slugs.map(slug => ({ params: { slug } }))
   return {
     paths,
-    fallback: false,
-  };
-};
+    fallback: false
+  }
+}
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const post = await fetcher(`posts/route/${slug}`);
+  const post = await fetcher(`posts/route/${slug}`)
 
   return {
     props: {
-      post,
-    },
-  };
-};
+      post
+    }
+  }
+}
 
-export default StaticPosts;
+export default StaticPosts
