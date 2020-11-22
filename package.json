@@ -1,19 +1,48 @@
 {
   "name": "hectane-next",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
+    "lint": "prettier --write '**/*.js'",
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn rss && next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "rss": "node lib/rss"
   },
+  "pre-commit": "lint",
+  "license": "MIT",
   "dependencies": {
     "highlight.js": "^10.1.1",
+    "lodash.debounce": "^4.0.8",
     "next": "9.3.5",
     "node-fetch": "^2.6.0",
+    "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "swr": "^0.2.3"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/node": "^14.0.22",
+    "@types/react": "^16.9.23",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "babel-eslint": "^10.0.2",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "gray-matter": "^4.0.2",
+    "marked": "^1.1.0",
+    "next-remote-watch": "^0.1.1",
+    "prettier": "^1.18.2",
+    "prism-react-renderer": "^1.1.1",
+    "rss": "^1.2.2",
+    "typescript": "^3.8.3"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
