@@ -13,11 +13,6 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://backend.hectane.com" />
           <link rel="preconnect" href="https://assets.hectane.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="stylesheet"
-            crossOrigin="anonymous"
-            href="https://use.typekit.net/qpd3ste.css"
-          ></link>
         </Head>
         <body>
           <Main />
@@ -30,9 +25,15 @@ class MyDocument extends Document {
                 const f = d.getElementsByTagName(s)[0],
                   j = d.createElement(s),
                   dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.defer = true;
+                j.async = true;
                 j.src = 'https://www.googletagmanager.com/gtag/js?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
+                w.WebFontConfig = { google: { families: ['Muli:400,600,800&display=swap'] } };
+                const wf = d.createElement('script');
+                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.defer = 'true';
+                f.parentNode.insertBefore(wf, f);
               })(window, document, 'script', 'dataLayer', 'UA-60696295-1');`
             }}
           />

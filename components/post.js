@@ -6,7 +6,7 @@ const Post = ({ post, author, index }) => {
   // const size = index === 0 ? { width: 682, height: 341 } : {};
   return (
     <div className="post--container">
-      <Link href={`/blog/${post.route}`} as={`/blog/${post.route}`}>
+      <Link href="/blog/[slug]" as={`/blog/${post.route}`}>
         <picture>
           <source
             srcSet={`https://assets.hectane.com/${post.route}/${imgPath}.webp`}
