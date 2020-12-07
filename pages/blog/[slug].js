@@ -32,6 +32,9 @@ const Post = ({ post, authorData }) => {
           />
           <meta httpEquiv="Content-Language" content="en" />
 
+          {/* Author */}
+          <meta name="author" content={`${authorData.name}`}></meta>
+
           {/* Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@hectane_blog" />

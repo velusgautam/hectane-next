@@ -1,5 +1,6 @@
 import Author from './author'
 import Link from 'next/link'
+import syles from './post.module.css'
 
 const Post = ({ post, author, index }) => {
   const imgPath = index === 0 ? 'listing' : 'mobile'
@@ -23,8 +24,7 @@ const Post = ({ post, author, index }) => {
             type="image/jpg"
           />
           <img
-            className="post--title-image lazyload"
-            // {...size}
+            className={`${syles['post--title-image']} lazyload`}
             data-src={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
             alt={post.route}
             loading="lazy"
@@ -34,7 +34,7 @@ const Post = ({ post, author, index }) => {
       <div>
         <Link href="/blog/[slug]" as={`/blog/${post.route}`}>
           <a className="post--header">
-            <h3 className="post--title">{post.title}</h3>
+            <h1 className="post--title">{post.title}</h1>
             <p className="post--subTitle">{post.subTitle}</p>
           </a>
         </Link>

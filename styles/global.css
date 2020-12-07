@@ -2,6 +2,10 @@
 
 /* Theme Purple #501885 */
 
+:root {
+  --black: #212121;
+}
+
 html,
 body {
   padding: 0;
@@ -219,6 +223,12 @@ a {
 
 .post--title {
   font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.post--subTitle {
+  font-size: 1rem;
   font-weight: 400;
 }
 
