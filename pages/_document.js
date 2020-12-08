@@ -22,18 +22,18 @@ class MyDocument extends Document {
               __html: `(function (w, d, s, l, i) {
                 w[l] = w[l] || [];
                 w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-                const f = d.getElementsByTagName(s)[0],
+                const f = d.body,
                   j = d.createElement(s),
                   dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
+                j.defer = true;
                 j.src = 'https://www.googletagmanager.com/gtag/js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
+                f.insertBefore(j, f.lastElementChild);
                 w.WebFontConfig = { google: { families: ['Muli:400,600,800&display=swap'] } };
                 const wf = d.createElement('script');
                 wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
                 wf.type = 'text/javascript';
                 wf.defer = 'true';
-                f.parentNode.insertBefore(wf, f);
+                f.insertBefore(wf, f.lastElementChild);
               })(window, document, 'script', 'dataLayer', 'UA-60696295-1');`
             }}
           />
