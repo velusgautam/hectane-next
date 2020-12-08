@@ -10,17 +10,17 @@ const Post = ({ post, author, index }) => {
       <Link href="/blog/[slug]" as={`/blog/${post.route}`}>
         <picture>
           <source
-            srcSet={`https://assets.hectane.com/${post.route}/${imgPath}.webp`}
+            data-srcset={`https://assets.hectane.com/${post.route}/${imgPath}.webp`}
             type="image/webp"
           />
           {index === 0 && (
             <source
-              srcSet={`https://assets.hectane.com/${post.route}/mobile.webp`}
+              data-srcset={`https://assets.hectane.com/${post.route}/mobile.webp`}
               type="image/webp"
             />
           )}
           <source
-            srcSet={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
+            data-srcset={`https://assets.hectane.com/${post.route}/${imgPath}.jpg`}
             type="image/jpg"
           />
           <img

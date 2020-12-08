@@ -9,7 +9,7 @@ import PageViews from '@/components/page-views'
 import styles from './[slug].module.css'
 import Layout from '@/layouts/main.layout'
 
-const Post = ({ post, authorData }) => {
+const Post = ({ post, author }) => {
   return (
     <Layout>
       <div className="container margin-auto padding-left20 padding-right20">
@@ -33,7 +33,7 @@ const Post = ({ post, authorData }) => {
           <meta httpEquiv="Content-Language" content="en" />
 
           {/* Author */}
-          <meta name="author" content={`${authorData.name}`}></meta>
+          <meta name="author" content={`${author.name}`}></meta>
 
           {/* Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
@@ -118,8 +118,8 @@ const Post = ({ post, authorData }) => {
           </picture>
           <div className={styles['post--metadata']}>
             <Author
-              name={authorData.name}
-              avathar={authorData.avathar}
+              name={author.name}
+              avathar={author.avathar}
               createdDate={post.createdDate}
             />
             <div className={styles['post__tags']}>
@@ -154,12 +154,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const post = await fetcher(`posts/route/${slug}`)
-  const authorData = await fetcher(`users/${post.authorId}`)
+  const author = await fetcher(`users/${post.authorId}`)
 
   return {
     props: {
       post,
-      authorData
+      author
     }
   }
 }

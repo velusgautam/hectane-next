@@ -1,5 +1,5 @@
 const Picture = ({
-  data: { caption, withBorder, withBackground, stretched, url },
+  data: { caption, withBorder, withBackground, stretched, url }
 }) => {
   if (url && url.includes('.gif')) {
     return (
@@ -11,12 +11,12 @@ const Picture = ({
         alt={caption}
         type="image/gif"
       />
-    );
+    )
   } else {
     return (
       <picture>
         <source
-          srcSet={`${url.replace(/\.[^/.]+$/, '')}.webp`}
+          data-srcset={`${url.replace(/\.[^/.]+$/, '')}.webp`}
           type="image/webp"
         />
         <img
@@ -27,8 +27,8 @@ const Picture = ({
           data-src={`${url.replace(/\.[^/.]+$/, '')}.jpg`}
         />
       </picture>
-    );
+    )
   }
-};
+}
 
-export default Picture;
+export default Picture
